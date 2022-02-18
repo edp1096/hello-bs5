@@ -4,6 +4,9 @@
 * https://edp1096.github.io/hello-bs5
 * https://edp1096.github.io/hello-bs5/sidebar
 
+## Layout
+* https://edp1096.github.io/hello-bs5/layout
+
 ## Source
 * `Offcanvas sidebar example`
     * https://github.com/samholford/bootstrap-5-offcanvas-sidebar
