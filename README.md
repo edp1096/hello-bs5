@@ -1,5 +1,6 @@
 # Taste Bootstrap 5
 
+## Responsive sidebar
 * https://edp1096.github.io/hello-bs5
 * https://edp1096.github.io/hello-bs5/sidebar
 
