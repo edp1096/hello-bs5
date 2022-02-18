@@ -11,13 +11,14 @@
 
 <body>
     <!-- Offcanvas -->
-    <div class="sidebar offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="sidebar">
+    <div id="sidebar" class="sidebar offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title">Offcanvas</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
         </div>
 
         <div class="offcanvas-body">
+
             <!-- Menu -->
             <div class="flex-shrink-0 p-3 bg-white">
                 <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
@@ -70,12 +71,12 @@
     <!-- Contents -->
     <div id="contents">
         <p>blahblahblah~</p>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~1<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~2<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~3<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~4<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~5<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br />shalalalala~~6<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <p>shalalalala~~shalalalala~~shalalalala~~</p>
     </div>
 
@@ -91,23 +92,39 @@
     const offcanvas = bs.Offcanvas.getOrCreateInstance(sidebar)
 
     let windowWidth = window.innerWidth
-    window.onresize = () => {
-        if (window.innerWidth !== windowWidth) {
-            windowWidth = window.innerWidth
 
-            switch (true) {
-                case window.innerWidth < mobileWidth:
-                    offcanvas.hide()
+    function toggleSidebar(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        offcanvas.toggle()
+    }
 
-                    break
-                default:
-                    offcanvas.show()
-                    setTimeout(() => { sidebar.style.visibility = null }, 1)
+    function setSidebar() {
+        windowWidth = window.innerWidth
 
-                    break
-            }
+        switch (true) {
+            case window.innerWidth < mobileWidth:
+                // Mobile
+                offcanvas._config.scroll = false
+                offcanvas._config.backdrop = true
+
+                offcanvas.hide()
+
+                break
+            default:
+                // Desktop
+                offcanvas._config.scroll = true
+                offcanvas._config.backdrop = false
+                setTimeout(() => { sidebar.style.visibility = null }, 1)
+
+                offcanvas.show()
+
+                break
         }
     }
+
+    window.onresize = () => { setSidebar() }
+    window.onload = () => { setSidebar() }
 </script>
 
 <link href="sidebar.css" />
