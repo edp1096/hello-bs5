@@ -60,18 +60,22 @@
     const sidebar = $('#sidebar')
     const offcanvas = bs.Offcanvas.getOrCreateInstance(sidebar)
 
+    let windowWidth = window.innerWidth
     window.onresize = async () => {
-        // offcanvas.hide()
-        switch (true) {
-            case window.innerWidth < mobileWidth:
-                offcanvas.hide()
+        if (window.innerWidth !== windowWidth) {
+            windowWidth = window.innerWidth
 
-                break
-            default:
-                offcanvas.show()
-                setTimeout(() => { sidebar.style.visibility = null }, 1)
+            switch (true) {
+                case window.innerWidth < mobileWidth:
+                    offcanvas.hide()
 
-                break
+                    break
+                default:
+                    offcanvas.show()
+                    setTimeout(() => { sidebar.style.visibility = null }, 1)
+
+                    break
+            }
         }
     }
 </script>
